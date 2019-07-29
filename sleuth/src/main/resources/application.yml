@@ -1,0 +1,22 @@
+server:
+  port: 8766
+
+spring:
+  application:
+    name: sleuth-server
+
+  main:
+    allow-bean-definition-overriding: true #允许相同key情况下beanDefinition实例的覆盖
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+#zipkin报错配置
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+

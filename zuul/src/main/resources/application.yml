@@ -1,0 +1,18 @@
+server:
+  port: 8767
+
+spring:
+  application:
+    name: zuul
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    api-2:
+      path: /sc-service-rest/**
+      #url: http://localhost:8763/
+      serviceId: sc-service-rest

@@ -1,0 +1,32 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: sc-service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+  zipkin:
+    base-url: http://localhost:8766
+
+    sleuth:
+      sampler:
+        percentage: 1.0
+
+    enabled: true
+routes:
+  - id: sc-service-rest
+    uri: lb://SC-SERVICE-REST
+    predicates:
+      - Path=/list/**
+    filters:
+      - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
